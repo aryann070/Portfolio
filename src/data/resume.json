@@ -1,0 +1,232 @@
+{
+    "personal": {
+        "name": "Aryan Surve",
+        "role": "Frontend Developer",
+        "location": "Mumbai, India",
+        "email": "aryansurve070@gmail.com",
+        "phone": "+91 8976539396",
+        "photo": "/main-image.png",
+        "summary": "Passionate Frontend Developer with expertise in building modern, responsive web applications. Skilled in React, Next.js, and creating pixel-perfect user interfaces with attention to detail and best practices."
+    },
+    "experience": [{
+        "company": "Schbang Digital Solutions",
+        "role": "Frontend Developer Intern",
+        "duration": "Feb 2025 - Present",
+        "description": "Working on building modern, responsive web applications and user interfaces.",
+        "responsibilities": [
+            "Developing responsive UI components using React and Next.js",
+            "Collaborating with design team to implement pixel-perfect interfaces",
+            "Optimizing web performance and ensuring cross-browser compatibility"
+        ],
+        "tech": ["React", "Next.js", "Tailwind CSS", "JavaScript"]
+    }],
+    "portfolio": {
+        "website": "https://shubhamnevare.vercel.app/",
+        "github": "https://github.com/Shubham-Nevare",
+        "linkedin": "https://www.linkedin.com/in/shubham-nevare-a607a0243"
+    },
+    "education": [
+        {
+            "degree": "Graduation",
+            "course": "BSc Computer Science",
+            "institution": "Guru Nanak Khalsa College - Mumbai University",
+            "percentage": "9.4 CGPA",
+            "cgpa": "9.4",
+            "year": "2023"
+        },
+        {
+            "degree": "HSC",
+            "course": "12th Standard",
+            "institution": "Guru Nanak Khalsa College",
+            "percentage": "88.33%",
+            "year": "2020"
+        },
+        {
+            "degree": "SSC",
+            "course": "10th Standard",
+            "institution": "Our Lady Of Salvation High School",
+            "percentage": "79%",
+            "year": "2018"
+        }
+    ],
+
+    "projects": [{
+            "title": "Portfolio Website",
+            "description": "Personal portfolio showcasing projects, skills, and experience with modern animations and responsive design.",
+            "tech": ["Next.js", "Tailwind CSS", "GSAP"],
+            "link": "https://shubhamnevare.vercel.app/",
+            "category": "frontend"
+        },
+
+        {
+            "title": "CareerConnect",
+            "description": "A MERN stack job portal enabling job seekers and employers to connect efficiently with Cloudinary integration.",
+            "tech": ["MongoDB", "Express.js", "React", "Node.js", "Tailwind CSS", "Cloudinary"],
+            "link": "https://career-connect-jobs.vercel.app",
+            "category": "full-stack"
+        },
+        {
+            "title": "Developous",
+            "description": "A modern tech services website built using Next.js and Tailwind CSS with high-performance deployment.",
+            "tech": ["Next.js", "React", "JavaScript", "Tailwind CSS"],
+            "link": "https://developous.com",
+            "category": "full-stack"
+        },
+        {
+            "title": "Digital Health",
+            "description": "A secure MERN stack healthcare platform with patient data management and online appointments.",
+            "tech": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+            "link": "https://digital-health-dh.vercel.app/",
+            "category": "full-stack"
+        },
+        {
+            "title": "Food Delivery Website",
+            "description": "A responsive food delivery application allowing users to browse restaurants, add items to cart, and place orders.",
+            "tech": ["React", "JavaScript", "Tailwind CSS"],
+            "link": "https://food-delivery-website-shubhams.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Smart AI Bot",
+            "description": "An AI-powered chatbot for intelligent, human-like responses and automated customer engagement.",
+            "tech": ["React", "JavaScript", "Tailwind CSS"],
+            "link": "https://smart-ai-bot.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Alex Book Finder",
+            "description": "A sleek and responsive web app for exploring millions of books using the Open Library API with filtering and bookmarking features.",
+            "tech": ["Next.js", "React", "JavaScript", "Tailwind CSS"],
+            "link": "https://book-finder-app-khaki.vercel.app/",
+            "category": "full-stack"
+        },
+        {
+            "title": "Doctor Appointment Website",
+            "description": "A PHP-based web application for managing doctors, patients, appointments, and medical reports.",
+            "tech": ["PHP", "HTML", "CSS"],
+            "link": "",
+            "category": "full-stack"
+        },
+
+        {
+            "title": "XOX / Rock Paper Scissors Game",
+            "description": "A fun and interactive browser-based game built with clean UI and smooth gameplay.",
+            "tech": ["HTML", "CSS", "JavaScript"],
+            "link": "https://xox-rps-game.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "D2D Consultancy Website",
+            "description": "A professional consultancy website with modern UI and responsive layout.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://d2d-cunsultancy.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Cake House Website",
+            "description": "A visually appealing bakery website showcasing products and services.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://cakehouse.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "PetPaws Hub",
+            "description": "A modern website for pet businesses with services showcase and WhatsApp inquiry integration.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://petpaws-hub.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Gym Mira Road",
+            "description": "A fitness and gym website designed to attract members with strong visuals and CTA sections.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://gymmiraroad.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Cars Doctor",
+            "description": "An automotive service website for showcasing car repair services and contact details.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://carsdoctor.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Akruti Developers",
+            "description": "A real-estate developer website with clean UI, project listings, and contact sections.",
+            "tech": ["Next.js", "Tailwind CSS"],
+            "link": "https://akruti-developers.vercel.app/",
+            "category": "frontend"
+        },
+        {
+            "title": "Weather Agent Chat Interface",
+            "description": "A full-stack chat-based weather assistant providing real-time weather information.",
+            "tech": ["React", "Node.js", "API Integration"],
+            "link": "https://weather-agent-chat-interface-waci.vercel.app/",
+            "category": "full-stack"
+        },
+        {
+            "title": "Blog Save",
+            "description": "A full-stack blogging platform allowing users to create, save, and manage blog posts.",
+            "tech": ["React", "Node.js", "MongoDB"],
+            "link": "https://blog-save.vercel.app/",
+            "category": "full-stack"
+        }
+    ],
+
+
+    "skills": {
+        "primary": ["ReactJS", "NextJS", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+        "secondary": ["GSAP", "Bootstrap", "Webflow", "MySQL", "MongoDB"]
+    },
+    "tools": {
+        "primary": ["Git", "GitHub", "Figma"],
+        "secondary": ["VS Code", "Chrome DevTools", "Postman"]
+    },
+    "achievements": [{
+            "title": "Machine Learning Foundations",
+            "issuer": "AWS Academy",
+            "year": "2024",
+            "link": "https://drive.google.com/file/d/1_bwj_doBGUUUqHPa3HL6BN2ScrHO9LQK/view?usp=sharing",
+            "badge": "https://www.credly.com/go/YUoIBeIR"
+        },
+        {
+            "title": "Cloud Foundations",
+            "issuer": "AWS Academy",
+            "year": "2024",
+            "link": "https://drive.google.com/file/d/1hh-Pzpb-kC8ZSQ_Pf-X3XPhtANgFwL5C/view?usp=sharing",
+            "badge": "https://www.credly.com/go/q1vOGdTE"
+        },
+        {
+            "title": "React Developer Certification",
+            "issuer": "SimpliLearn",
+            "year": "2025",
+            "link": "https://drive.google.com/file/d/1tZ11BUfB9KEqvOXk6dcEBe6dqqyA_Zut/view?usp=sharing",
+            "badge": ""
+        },
+        {
+            "title": "SQL Certification",
+            "issuer": "Newton School",
+            "year": "2025",
+            "link": "https://drive.google.com/file/d/1qwgS2ZQb6cFELoBDiqFfQdkEMGiwIB8_/view?usp=sharing",
+            "badge": ""
+        },
+        {
+            "title": "Power BI Certification",
+            "issuer": "Newton School",
+            "year": "2025",
+            "link": "https://drive.google.com/file/d/1mSPObF52KPQy7Dlv92Si5qFtjqUu2LTa/view?usp=sharing",
+            "badge": ""
+        }
+    ],
+
+    "extracurricular": [
+        "Active participation in college tech fests and hackathons",
+        "Member of college coding club",
+        "Volunteer for community tech workshops"
+    ],
+    "references": [{
+        "name": "Available upon request",
+        "contact": "",
+        "linkedin": ""
+    }]
+}

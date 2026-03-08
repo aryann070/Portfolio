@@ -1,6 +1,6 @@
-# Resume UI - Shubham Nevare
+# Resume UI - Aryan Surve
 
-**Name:** Shubham Nevare  
+**Name:** Aryan Surve  
 **Role Applied For:** Frontend Developer Intern at Platione
 
 ## 🚀 Live Demo

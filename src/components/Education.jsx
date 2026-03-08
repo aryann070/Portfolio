@@ -2,13 +2,14 @@ export default function Education({ education }) {
   return (
     <section id="education" className="py-20 bg-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Education
+         {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            Educational{" "}
+            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              Journey
+            </span>
           </h2>
-          <p className="text-white max-w-2xl mx-auto">
-            My academic journey and qualifications
-          </p>
         </div>
 
         <div className="max-w-3xl mx-auto">

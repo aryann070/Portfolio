@@ -1,78 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
-import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
-import { Award, ExternalLink } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
-gsap.registerPlugin(Draggable);
+import { ExternalLink } from "lucide-react";
 
-function Achievements() {
-  const scrollRef = useRef(null);
-  const containerRef = useRef(null);
-  const tweenRef = useRef(null);
-  const draggableRef = useRef(null);
-
-  useEffect(() => {
-    if (scrollRef.current && containerRef.current) {
-      const certificatesWidth = scrollRef.current.scrollWidth / 2;
-      const containerWidth = containerRef.current.offsetWidth;
-
-      if (certificatesWidth > containerWidth) {
-        tweenRef.current = gsap.to(scrollRef.current, {
-          xPercent: -50,
-          repeat: -1,
-          ease: "none",
-          duration: 20,
-        });
-
-        draggableRef.current = Draggable.create(scrollRef.current, {
-          type: "x",
-          bounds: {
-            minX: containerWidth - certificatesWidth * 2,
-            maxX: 0,
-          },
-          edgeResistance: 0.8,
-          inertia: true,
-          onDrag: function () {
-            tweenRef.current?.pause();
-          },
-          onThrowComplete: function () {
-            tweenRef.current?.resume();
-          },
-        })[0];
-      }
-    }
-
-    return () => {
-      tweenRef.current?.kill();
-      draggableRef.current?.kill();
-    };
-  }, []);
-
-  const pauseScroll = useCallback(() => {
-    tweenRef.current?.pause();
-  }, []);
-
-  const resumeScroll = useCallback(() => {
-    tweenRef.current?.resume();
-  }, []);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (el) {
-      el.addEventListener("mouseenter", pauseScroll);
-      el.addEventListener("mouseleave", resumeScroll);
-    }
-
-    return () => {
-      if (el) {
-        el.removeEventListener("mouseenter", pauseScroll);
-        el.removeEventListener("mouseleave", resumeScroll);
-      }
-    };
-  }, [pauseScroll, resumeScroll]);
-
+export default function Achievements() {
   const certificates = [
     {
       title: "Machine Learning Foundations",
@@ -81,7 +15,6 @@ function Achievements() {
       image:
         "https://plus.unsplash.com/premium_photo-1682124710157-d1573373a4f5?w=600",
       link: "https://drive.google.com/",
-      badge: "https://www.credly.com/",
     },
     {
       title: "Cloud Foundations",
@@ -90,7 +23,6 @@ function Achievements() {
       image:
         "https://images.unsplash.com/photo-1569428034239-f9565e32e224?w=600",
       link: "https://drive.google.com/",
-      badge: "https://www.credly.com/",
     },
     {
       title: "React Developer Certification",
@@ -101,49 +33,91 @@ function Achievements() {
       link: "https://drive.google.com/",
     },
     {
-      title: "SQL",
-      issuer: "Newton School",
-      date: "March 2025",
-      image: "https://via.placeholder.com/600x400",
+      title: "Machine Learning Foundations",
+      issuer: "AWS Academy",
+      date: "July 2024",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682124710157-d1573373a4f5?w=600",
       link: "https://drive.google.com/",
     },
     {
-      title: "Power BI",
-      issuer: "Newton School",
-      date: "March 2025",
-      image: "https://via.placeholder.com/600x400",
+      title: "Cloud Foundations",
+      issuer: "AWS Academy",
+      date: "November 2024",
+      image:
+        "https://images.unsplash.com/photo-1569428034239-f9565e32e224?w=600",
       link: "https://drive.google.com/",
     },
+    {
+      title: "React Developer Certification",
+      issuer: "SimpliLearn",
+      date: "March 2025",
+      image:
+        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
+      link: "https://drive.google.com/",
+    },
+    // {
+    //   title: "SQL",
+    //   issuer: "Newton School",
+    //   date: "March 2025",
+    //   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
+    //   link: "https://drive.google.com/",
+    // },
+    // {
+    //   title: "Power BI",
+    //   issuer: "Newton School",
+    //   date: "March 2025",
+    //   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
+    //   link: "https://drive.google.com/",
+    // },
   ];
 
   return (
-    <section className="py-16 bg-gray-900 text-white overflow-hidden">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-12">
-          Achievements &{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Certifications
-          </span>
-        </h2>
-        <div
-          ref={containerRef}
-          className="overflow-hidden cursor-grab active:cursor-grabbing"
+    <section className="py-20 bg-gray-900 text-white">
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold">
+            Achievements &{" "}
+            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              Certifications
+            </span>
+          </h2>
+        </div>
+
+        {/* Swiper */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={24}
+          loop={true}
+          speed={4000}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.2 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
         >
-          <div ref={scrollRef} className="flex gap-6 w-max">
-            {[...certificates, ...certificates].map((cert, index) => (
-              <div
-                key={index}
-                className="min-w-[300px] bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
-              >
+          {certificates.map((cert, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-[#111827] rounded-xl overflow-hidden border border-white/10 
+hover:border-blue-500/50 hover:bg-[#0f172a] hover:shadow-lg hover:shadow-blue-500/20 
+transition-all duration-300">
                 <img
                   src={cert.image}
                   alt={cert.title}
                   className="w-full h-48 object-cover"
                 />
 
-                <div className="p-4">
+                <div className="p-5">
                   <h3 className="text-lg font-semibold">{cert.title}</h3>
+
                   <p className="text-sm text-gray-400">{cert.issuer}</p>
+
                   <p className="text-xs text-gray-500 mb-3">{cert.date}</p>
 
                   <a
@@ -156,13 +130,13 @@ function Achievements() {
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
+
               </div>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
       </div>
     </section>
   );
 }
-
-export default Achievements;

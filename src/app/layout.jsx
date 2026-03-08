@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Shubham Nevare | Frontend Developer",
+  title: "Aryan Surve | Frontend Developer",
   description:
     "Frontend Developer skilled in React, Next.js, and modern web technologies. View my portfolio, projects, and professional experience.",
   keywords:

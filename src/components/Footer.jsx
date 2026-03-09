@@ -4,56 +4,115 @@ export default function Footer({ personal, portfolio }) {
   const currentYear = new Date().getFullYear();
 
   return (
-   <footer className="relative bg-[#020617]/90 backdrop-blur-xl border-t border-white/10 py-10">
+    <footer
+      className="relative backdrop-blur-xl py-10 transition-colors duration-300"
+      style={{
+        background: "var(--bg-secondary)",
+        borderTop: "1px solid var(--border)",
+      }}
+    >
+      {/* gradient glow */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
 
-  {/* gradient glow */}
-  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+      <div className="relative max-w-6xl mx-auto px-6">
 
-  <div className="relative max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between gap-8">
 
-    <div className="flex flex-col md:flex-row justify-between gap-8">
+          {/* Branding */}
+          <div>
+            <h3
+              className="text-lg font-semibold"
+              style={{
+                background:
+                  "linear-gradient(to right,var(--gradient-start),var(--gradient-end))",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              Aryan Surve
+            </h3>
 
-      {/* Branding */}
-      <div>
-        <h3 className="text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-          Aryan Surve
-        </h3>
+            <p
+              className="text-sm mt-2 max-w-sm"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Building modern web experiences with clean UI and smooth performance.
+            </p>
+          </div>
 
-        <p className="text-gray-400 text-sm mt-2 max-w-sm">
-          Building modern web experiences with clean UI and smooth performance.
-        </p>
+          {/* Navigation */}
+          <div
+            className="flex flex-wrap gap-6 text-sm"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            <a
+              href="#about"
+              className="transition hover:text-blue-500"
+            >
+              About
+            </a>
+
+            <a
+              href="#education"
+              className="transition hover:text-blue-500"
+            >
+              Education
+            </a>
+
+            <a
+              href="#projects"
+              className="transition hover:text-blue-500"
+            >
+              Projects
+            </a>
+
+            <a
+              href="#skills"
+              className="transition hover:text-blue-500"
+            >
+              Skills
+            </a>
+
+            <a
+              href="#contact"
+              className="transition hover:text-blue-500"
+            >
+              Contact
+            </a>
+          </div>
+
+        </div>
+
+        {/* Divider */}
+        <div
+          className="mt-8 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm"
+          style={{
+            borderTop: "1px solid var(--border)",
+            color: "var(--text-muted)",
+          }}
+        >
+
+          <p>
+            © {currentYear}{" "}
+            <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+              Aryan Surve
+            </span>. All rights reserved.
+          </p>
+
+          <p>
+            Built with{" "}
+            <span style={{ color: "var(--gradient-start)" }}>
+              Next.js
+            </span>{" "}
+            &{" "}
+            <span style={{ color: "var(--gradient-end)" }}>
+              Tailwind CSS
+            </span>
+          </p>
+
+        </div>
+
       </div>
-
-      {/* Links */}
-      <div className="flex gap-6 text-sm text-gray-400">
-        <a href="#about" className="hover:text-white transition">About</a>
-        <a href="#education" className="hover:text-white transition">Education</a>
-        <a href="#projects" className="hover:text-white transition">Projects</a>
-        <a href="#skills" className="hover:text-white transition">Skills</a>
-        <a href="#contact" className="hover:text-white transition">Contact</a>
-      </div>
-
-    </div>
-
-    {/* Divider */}
-    <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between text-sm text-gray-400">
-
-      <p>
-        © {new Date().getFullYear()} 
-        <span className="text-white font-medium"> Aryan Surve</span>. 
-        All rights reserved.
-      </p>
-
-      <p>
-        Built with 
-        <span className="text-blue-400"> Next.js</span> & 
-        <span className="text-purple-400"> Tailwind CSS</span>
-      </p>
-
-    </div>
-
-  </div>
-
-</footer>
+    </footer>
   );
 }

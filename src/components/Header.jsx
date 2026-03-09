@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Sun, Moon } from "lucide-react";
 
 export default function Header({ personal, portfolio }) {
   const [scrolled, setScrolled] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Header({ personal, portfolio }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0B1220]/80 backdrop-blur-xl border-b border-white/10 py-3"
+          ? "bg-[var(--bg-card)]/80 backdrop-blur-xl border-b border-[var(--border)] py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -47,11 +48,9 @@ export default function Header({ personal, portfolio }) {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+                  className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors relative group"
                 >
                   {item}
-
-                  {/* Animated underline */}
                   <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 transition-all group-hover:w-full"></span>
                 </a>
               ),
@@ -60,16 +59,30 @@ export default function Header({ personal, portfolio }) {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
-            {/* GitHub */}
+            {/* Theme Toggle */}
+            <button
+              onClick={() =>
+                setTheme(resolvedTheme === "dark" ? "light" : "dark")
+              }
+              className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition"
+              aria-label="Toggle Theme"
+            >
+              {resolvedTheme === "dark" ? (
+                <Sun className="w-5 h-5 text-[var(--text-primary)]" />
+              ) : (
+                <Moon className="w-5 h-5 text-[var(--text-primary)]" />
+              )}
+            </button>
+
             {/* GitHub */}
             <a
               href={portfolio.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-white/5 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 transition group"
+              className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition"
               aria-label="GitHub"
             >
-              <FaGithub className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
+              <FaGithub className="w-5 h-5 text-[var(--text-primary)]" />
             </a>
 
             {/* LinkedIn */}
@@ -77,10 +90,10 @@ export default function Header({ personal, portfolio }) {
               href={portfolio.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-white/5 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 transition group"
+              className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition"
               aria-label="LinkedIn"
             >
-              <FaLinkedin className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
+              <FaLinkedin className="w-5 h-5 text-[var(--text-primary)]" />
             </a>
           </div>
         </div>

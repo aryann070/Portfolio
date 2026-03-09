@@ -32,55 +32,30 @@ export default function Achievements() {
         "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
       link: "https://drive.google.com/",
     },
-    {
-      title: "Machine Learning Foundations",
-      issuer: "AWS Academy",
-      date: "July 2024",
-      image:
-        "https://plus.unsplash.com/premium_photo-1682124710157-d1573373a4f5?w=600",
-      link: "https://drive.google.com/",
-    },
-    {
-      title: "Cloud Foundations",
-      issuer: "AWS Academy",
-      date: "November 2024",
-      image:
-        "https://images.unsplash.com/photo-1569428034239-f9565e32e224?w=600",
-      link: "https://drive.google.com/",
-    },
-    {
-      title: "React Developer Certification",
-      issuer: "SimpliLearn",
-      date: "March 2025",
-      image:
-        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
-      link: "https://drive.google.com/",
-    },
-    // {
-    //   title: "SQL",
-    //   issuer: "Newton School",
-    //   date: "March 2025",
-    //   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
-    //   link: "https://drive.google.com/",
-    // },
-    // {
-    //   title: "Power BI",
-    //   issuer: "Newton School",
-    //   date: "March 2025",
-    //   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
-    //   link: "https://drive.google.com/",
-    // },
   ];
 
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section
+      className="py-20 transition-colors duration-300"
+      style={{ background: "var(--bg-secondary)" }}
+    >
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold">
+          <h2
+            className="text-3xl sm:text-4xl font-bold"
+            style={{ color: "var(--text-primary)" }}
+          >
             Achievements &{" "}
-            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            <span
+              style={{
+                background:
+                  "linear-gradient(to right,var(--gradient-start),var(--gradient-end))",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
               Certifications
             </span>
           </h2>
@@ -104,9 +79,13 @@ export default function Achievements() {
         >
           {certificates.map((cert, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-[#111827] rounded-xl overflow-hidden border border-white/10 
-hover:border-blue-500/50 hover:bg-[#0f172a] hover:shadow-lg hover:shadow-blue-500/20 
-transition-all duration-300">
+              <div
+                className="rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                }}
+              >
                 <img
                   src={cert.image}
                   alt={cert.title}
@@ -114,23 +93,37 @@ transition-all duration-300">
                 />
 
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold">{cert.title}</h3>
+                  <h3
+                    className="text-lg font-semibold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {cert.title}
+                  </h3>
 
-                  <p className="text-sm text-gray-400">{cert.issuer}</p>
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {cert.issuer}
+                  </p>
 
-                  <p className="text-xs text-gray-500 mb-3">{cert.date}</p>
+                  <p
+                    className="text-xs mb-3"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {cert.date}
+                  </p>
 
                   <a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm"
+                    className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 text-sm"
                   >
                     View Certificate
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
-
               </div>
             </SwiperSlide>
           ))}

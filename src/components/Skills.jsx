@@ -12,48 +12,57 @@ import {
 import { SiExpress, SiMongodb, SiMysql } from "react-icons/si";
 
 const skills = [
-  { name: "HTML", icon: FaHtml5, color: "text-orange-500" },
-  { name: "CSS", icon: FaCss3Alt, color: "text-blue-500" },
-  { name: "Bootstrap", icon: FaBootstrap, color: "text-purple-600" },
-  { name: "JavaScript", icon: FaJsSquare, color: "text-yellow-400" },
-  { name: "React JS", icon: FaReact, color: "text-cyan-400" },
-  { name: "Node JS", icon: FaNodeJs, color: "text-green-500" },
-  { name: "Express JS", icon: SiExpress, color: "text-gray-200" },
-  { name: "SQL", icon: SiMysql, color: "text-blue-600" },
-  { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-  { name: "Python", icon: FaPython, color: "text-yellow-500" },
-  { name: "Figma", icon: FaFigma, color: "text-pink-500" },
+  { name: "HTML", icon: FaHtml5, color: "#f97316" },
+  { name: "CSS", icon: FaCss3Alt, color: "#3b82f6" },
+  { name: "Bootstrap", icon: FaBootstrap, color: "#9333ea" },
+  { name: "JavaScript", icon: FaJsSquare, color: "#facc15" },
+  { name: "React JS", icon: FaReact, color: "#22d3ee" },
+  { name: "Node JS", icon: FaNodeJs, color: "#22c55e" },
+  { name: "Express JS", icon: SiExpress, color: "#9ca3af" },
+  { name: "SQL", icon: SiMysql, color: "#2563eb" },
+  { name: "MongoDB", icon: SiMongodb, color: "#16a34a" },
+  { name: "Python", icon: FaPython, color: "#eab308" },
+  { name: "Figma", icon: FaFigma, color: "#ec4899" },
 ];
 
 const TechnicalSkills = () => {
   return (
-    <section className="bg-gray-900 py-20 px-6 text-white">
+    <section
+      className="py-20 px-6"
+      style={{ background: "var(--bg-secondary)", color: "var(--text-primary)" }}
+    >
       <div className="text-center mb-16">
-      {/* Title */}
-      <h2 className="text-4xl font-bold mb-4">
-        Technical{" "}
-        <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-          Skills
-        </span>
-      </h2>
+        <h2 className="text-4xl font-bold mb-4">
+          Technical{" "}
+          <span
+            style={{
+              background: "linear-gradient(to right,var(--gradient-start),var(--gradient-end))",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Skills
+          </span>
+        </h2>
       </div>
 
-      {/* Grid */}
       <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
         {skills.map((skill, index) => {
           const Icon = skill.icon;
+
           return (
             <div
               key={index}
-              className="group bg-slate-800 rounded-2xl p-8 flex flex-col items-center justify-center 
-              shadow-md hover:shadow-xl hover:-translate-y-2 
-              transition-all duration-300 cursor-pointer"
+              className="group rounded-2xl p-8 flex flex-col items-center justify-center shadow-md hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              style={{ background: "var(--bg-card)" }}
             >
               <Icon
-                className={`text-5xl mb-4 ${skill.color} 
-                group-hover:drop-shadow-[0_0_15px_currentColor]`}
+                className="text-5xl mb-4"
+                style={{ color: skill.color }}
               />
-              <p className="text-sm font-medium tracking-wide">{skill.name}</p>
+              <p className="text-sm font-medium tracking-wide">
+                {skill.name}
+              </p>
             </div>
           );
         })}

@@ -16,12 +16,12 @@ function Internship() {
   ];
 
   return (
-    <section id="internships" className="py-20 bg-gray-900">
+    <section id="internships" className="py-20 bg-[var(--bg-secondary)]">
       <div className="container mx-auto px-4">
-        
+
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">
+          <h2 className="text-4xl font-bold mb-4 text-[var(--text-primary)]">
             Professional{" "}
             <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
               Experience
@@ -33,12 +33,12 @@ function Internship() {
           {internships.map((internship, index) => (
             <div
               key={index}
-              className="bg-gray-800 rounded-lg p-6 hover:scale-[1.02] transition-all duration-300 w-full md:w-[70%]"
+              className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 w-full md:w-[70%]"
             >
-              
+
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-                
+
                 <div className="flex items-center gap-4">
                   {internship.companyLogo && (
                     <Image
@@ -51,29 +51,31 @@ function Internship() {
                   )}
 
                   <div>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-1 text-white">
+                    <h3 className="text-lg sm:text-xl font-semibold mb-1 text-[var(--text-primary)]">
                       {internship.company}
                     </h3>
-                    <p className="text-blue-400 text-sm">
+                    <p className="text-blue-500 text-sm">
                       {internship.position}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-400 text-sm sm:whitespace-nowrap">
+                <p className="text-[var(--text-secondary)] text-sm sm:whitespace-nowrap">
                   {internship.duration}
                 </p>
               </div>
 
               {/* Description */}
-              <p className="text-gray-300 mb-4">{internship.description}</p>
+              <p className="text-[var(--text-secondary)] mb-4">
+                {internship.description}
+              </p>
 
               {/* Skills */}
               <div className="flex flex-wrap gap-2">
                 {internship.skills.map((skill, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300"
+                    className="px-3 py-1 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-full text-sm text-[var(--text-secondary)]"
                   >
                     {skill}
                   </span>

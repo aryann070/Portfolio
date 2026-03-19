@@ -1,60 +1,79 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useState } from "react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import { ExternalLink } from "lucide-react";
 
 export default function Achievements() {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   const certificates = [
     {
-      title: "Machine Learning Foundations",
-      issuer: "AWS Academy",
-      date: "July 2024",
+      title: "HTML",
+      issuer: "IBM Skills Build",
+      date: "Oct 2024",
       image:
-        "https://plus.unsplash.com/premium_photo-1682124710157-d1573373a4f5?w=600",
-      link: "https://drive.google.com/",
+        "/card/html.jpg",
+      link: "/certificates/html.pdf",
     },
     {
-      title: "Cloud Foundations",
-      issuer: "AWS Academy",
-      date: "November 2024",
+      title: "CSS",
+      issuer: "Great Learning Academy",
+      date: "Dec 2024",
       image:
-        "https://images.unsplash.com/photo-1569428034239-f9565e32e224?w=600",
-      link: "https://drive.google.com/",
+        "/card/css.png",
+      link: "/certificates/css.pdf",
     },
     {
-      title: "React Developer Certification",
-      issuer: "SimpliLearn",
-      date: "March 2025",
+      title: "Javascript",
+      issuer: "MIMO Learninig",
+      date: "Jan 2025",
       image:
-        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
-      link: "https://drive.google.com/",
+        "/card/js.jpg",
+      link: "/certificates/js-mimo.pdf",
     },
     {
-      title: "React Developer Certification",
-      issuer: "SimpliLearn",
-      date: "March 2025",
+      title: "Javascript for Beginners",
+      issuer: "Cursa",
+      date: "March 2026",
       image:
-        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
-      link: "https://drive.google.com/",
+        "/card/js1.jpg",
+      link: "/certificates/js-cursa.pdf",
     },
     {
-      title: "React Developer Certification",
-      issuer: "SimpliLearn",
-      date: "March 2025",
+      title: "Tailwind CSS",
+      issuer: "Mindluster",
+      date: "March 2026",
       image:
-        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
-      link: "https://drive.google.com/",
+        "/card/tailwind.png",
+      link: "/certificates/tailwind.pdf",
     },
     {
-      title: "React Developer Certification",
-      issuer: "SimpliLearn",
-      date: "March 2025",
+      title: "Git and Github",
+      issuer: "Geekster",
+      date: "Dec 2024",
       image:
-        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600",
-      link: "https://drive.google.com/",
+        "/card/github.jpg",
+      link: "/certificates/github.pdf",
+    },
+     {
+      title: "AI Tools Workshop",
+      issuer: "Be 10X",
+      date: "Mar 2026",
+      image:
+        "/card/ai1.jpg",
+      link: "/certificates/ai-workshop.pdf",
+    },
+     {
+      title: "AI for Business Professionals",
+      issuer: "HP Life",
+      date: "Feb 2026",
+      image:
+        "/card/ai2.jpg",
+      link: "/certificates/ai-hp.pdf",
     },
   ];
 

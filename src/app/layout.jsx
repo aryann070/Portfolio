@@ -1,8 +1,8 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -27,12 +27,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
       >
-          <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
-          enableSystem={true}
+          enableSystem
         >
           {children}
         </ThemeProvider>

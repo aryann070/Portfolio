@@ -1,3 +1,5 @@
+"use client";
+
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -5,8 +7,104 @@ import {
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Contact({ personal, portfolio }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          message:
+            "Your message has been sent successfully. I'll get back to you soon!",
+        });
+
+        setTimeout(() => {
+          setStatus({
+            type: "",
+            message: "",
+          });
+        }, 5000);
+
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          message: data.message,
+        });
+
+        setTimeout(() => {
+          setStatus({
+            type: "",
+            message: "",
+          });
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+
+      setTimeout(() => {
+        setStatus({
+          type: "",
+          message: "",
+        });
+      }, 5000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
   return (
     <section
       id="contact"
@@ -120,7 +218,7 @@ export default function Contact({ personal, portfolio }) {
                   href={portfolio.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition"
+                  className="p-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500  transition"
                   style={{ background: "var(--bg-secondary)" }}
                 >
                   <FaGithub className="w-5 h-5" />
@@ -130,7 +228,7 @@ export default function Contact({ personal, portfolio }) {
                   href={portfolio.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition"
+                  className="p-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500  transition"
                   style={{ background: "var(--bg-secondary)" }}
                 >
                   <FaLinkedin className="w-5 h-5" />
@@ -156,7 +254,13 @@ export default function Contact({ personal, portfolio }) {
               borderColor: "var(--border)",
             }}
           >
-            <form className="space-y-6">
+            <h3
+              className="text-2xl font-semibold mb-8"
+              style={{ color: "var(--text-primary)" }}
+            >
+              Lets Connect
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name + Phone */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
@@ -166,12 +270,51 @@ export default function Contact({ personal, portfolio }) {
                   <input
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
           hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
           outline-none transition"
                   />
                 </div>
+
+                {/* Company + Job Title */}
+
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-400">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
+          hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
+          outline-none transition"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-400">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
+          hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
+          outline-none transition"
+                  />
+                </div>
+
+                {/* Email */}
 
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-medium text-gray-400">
@@ -180,55 +323,14 @@ export default function Contact({ personal, portfolio }) {
                   <input
                     type="tel"
                     name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
-          hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
-          outline-none transition"
-                  />
-                </div>
-              </div>
-
-              {/* Company + Job Title */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-400">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
-          hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
-          outline-none transition"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <label className="text-sm font-medium text-gray-400">
-                    Job Title
-                  </label>
-                  <input
-                    type="text"
-                    name="jobTitle"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
-          hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
-          outline-none transition"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-gray-400">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
         hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
         outline-none transition"
-                />
+                  />
+                </div>
               </div>
 
               {/* Message */}
@@ -237,8 +339,10 @@ export default function Contact({ personal, portfolio }) {
                   Message
                 </label>
                 <textarea
-                  rows={5}
                   name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-gray-600 bg-[var(--bg-input)] 
         hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 
@@ -249,11 +353,22 @@ export default function Contact({ personal, portfolio }) {
               {/* Button */}
               <button
                 type="submit"
-                className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 
-      text-white font-medium hover:scale-105 transition"
+                disabled={loading}
+                className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+              {status.message && (
+                <div
+                  className={`mt-4 rounded-xl p-4 text-sm font-medium ${
+                    status.type === "success"
+                      ? "bg-green-500/10 border border-green-500 text-green-500"
+                      : "bg-red-500/10 border border-red-500 text-red-500"
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
             </form>
           </div>
         </div>

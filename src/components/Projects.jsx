@@ -1,8 +1,9 @@
 "use client";
 
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects } from "../data/projects";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,8 +30,7 @@ function ProjectSection() {
 
   return (
     <section id="projects" className="py-20 bg-[var(--bg-secondary)]">
-      <div className="container mx-auto px-4">
-
+      <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -70,7 +70,7 @@ function ProjectSection() {
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-46 object-fit"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.4 }}
                 />
@@ -86,7 +86,10 @@ function ProjectSection() {
                       whileTap={{ scale: 0.9 }}
                       className="p-2 bg-[var(--bg-card)]/80 rounded-full backdrop-blur hover:bg-[var(--bg-secondary)] transition"
                     >
-                      <ExternalLink size={16} className="text-[var(--text-primary)]" />
+                      <ExternalLink
+                        size={16}
+                        className="text-[var(--text-primary)]"
+                      />
                     </motion.a>
                   )}
 
@@ -98,25 +101,28 @@ function ProjectSection() {
                       whileTap={{ scale: 0.9 }}
                       className="p-2 bg-[var(--bg-card)]/80 rounded-full backdrop-blur hover:bg-[var(--bg-secondary)] transition"
                     >
-                      <Github size={16} className="text-[var(--text-primary)]" />
+                      <Github
+                        size={16}
+                        className="text-[var(--text-primary)]"
+                      />
                     </motion.a>
                   )}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-[var(--text-primary)] group-hover:text-blue-500 transition">
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex justify-between items-start gap-3 mb-3">
+                  <h3 className="flex-1 text-base font-semibold text-[var(--text-primary)] group-hover:text-blue-500 transition line-clamp-2">
                     {project.title}
                   </h3>
 
-                  <span className="text-xs text-[var(--text-secondary)] bg-[var(--bg-secondary)] px-2 py-1 rounded-full">
+                  <span className="shrink-0 text-xs text-[var(--text-secondary)] bg-[var(--bg-secondary)] px-2 py-1 rounded-full whitespace-nowrap">
                     {project.duration}
                   </span>
                 </div>
 
-                <p className="text-[var(--text-secondary)] mb-4 line-clamp-3">
+                <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -142,7 +148,7 @@ function ProjectSection() {
                       whileHover={{ x: 5 }}
                     >
                       <ExternalLink size={18} />
-                      <span>Live Demo</span>
+                      <span>Live</span>
                     </motion.a>
                   ) : (
                     <span className="text-[var(--text-secondary)] text-sm">
@@ -154,7 +160,18 @@ function ProjectSection() {
             </motion.div>
           ))}
         </motion.div>
+      </div>
 
+      <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            View All Projects
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );

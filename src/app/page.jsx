@@ -8,7 +8,6 @@ import Skills from '@/components/Skills';
 import Achievements from '@/components/Achievements';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Team from '@/components/Team';
 
 export default function Home() {
   const { personal, portfolio, experience, education, projects, skills, tools, achievements, extracurricular, references } = resumeData;

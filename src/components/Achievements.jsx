@@ -8,6 +8,13 @@ import { ExternalLink } from "lucide-react";
 
 export default function Achievements() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
+   const handleViewCertificate = (link) => {
+  if (window.innerWidth < 768) {
+    window.open(link, "_blank");
+  } else {
+    setSelectedCertificate(link);
+  }
+};
 
   const certificates = [
     {
@@ -67,6 +74,8 @@ export default function Achievements() {
       link: "/certificates/ai-hp.pdf",
     },
   ];
+
+
 
   return (
     <section
@@ -150,7 +159,7 @@ export default function Achievements() {
                   </p>
 
                   <button
-                    onClick={() => setSelectedCertificate(cert.link)}
+                    onClick={() => handleViewCertificate(cert.link)}
                     className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 text-sm cursor-pointer"
                   >
                     View Certificate

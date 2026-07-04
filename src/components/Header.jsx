@@ -35,7 +35,7 @@ export default function Header({ personal, portfolio }) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
           >
             {personal.name}

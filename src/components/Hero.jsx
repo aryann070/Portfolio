@@ -1,10 +1,121 @@
 "use client";
 
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaCircle } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaCircle,
+} from "react-icons/fa";
 import { useState } from "react";
 
 export default function Hero({ personal, portfolio }) {
   const [openForm, setOpenForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          message: "Your message has been sent successfully. I'll get back to you soon!",
+        });
+
+        setTimeout(() => {
+          setOpenForm(false);
+
+          // Optional: Clear the success message
+          setStatus({
+            type: "",
+            message: "",
+          });
+
+          // Optional: Reset the form
+          setFormData({
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        }, 4000); // closes after 2 seconds
+
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          message: data.message,
+        });
+
+        setTimeout(() => {
+          setStatus({
+            type: "",
+            message: "",
+          });
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+
+      setTimeout(() => {
+        setStatus({
+          type: "",
+          message: "",
+        });
+      }, 5000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
   return (
     <section
       id="about"
@@ -28,30 +139,28 @@ export default function Hero({ personal, portfolio }) {
             </p>
 
             {/* Contact Info */}
-           <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap gap-4 mb-8">
+              <a
+                href={`mailto:${personal.email}`}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-accent hover:border-purple-500/40 hover:shadow-md transition-all duration-300"
+              >
+                <FaEnvelope className="w-4 h-4 text-purple-400" />
+                {personal.email}
+              </a>
 
-  <a
-    href={`mailto:${personal.email}`}
-    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-accent hover:border-purple-500/40 hover:shadow-md transition-all duration-300"
-  >
-    <FaEnvelope className="w-4 h-4 text-purple-400" />
-    {personal.email}
-  </a>
+              <a
+                href={`tel:${personal.phone}`}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-accent hover:border-green-500/40 hover:shadow-md transition-all duration-300"
+              >
+                <FaPhoneAlt className="w-4 h-4 text-green-400" />
+                {personal.phone}
+              </a>
 
-  <a
-    href={`tel:${personal.phone}`}
-    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-accent hover:border-green-500/40 hover:shadow-md transition-all duration-300"
-  >
-    <FaPhoneAlt className="w-4 h-4 text-green-400" />
-    {personal.phone}
-  </a>
-
-  <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:border-red-500/40 hover:shadow-md transition-all duration-300">
-    <FaMapMarkerAlt className="w-4 h-4 text-red-400" />
-    {personal.location}
-  </span>
-
-</div>
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:border-red-500/40 hover:shadow-md transition-all duration-300">
+                <FaMapMarkerAlt className="w-4 h-4 text-red-400" />
+                {personal.location}
+              </span>
+            </div>
           </div>
 
           {/* Photo */}
@@ -101,41 +210,88 @@ export default function Hero({ personal, portfolio }) {
 
         {openForm && (
           <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-            <div className="bg-[var(--bg-card)] p-8 rounded-2xl w-[90%] max-w-md shadow-xl">
+            <div className="relative bg-[var(--bg-card)] p-8 rounded-2xl w-[90%] max-w-md shadow-xl">
               <h3 className="text-xl font-semibold mb-4">Contact Me</h3>
 
-              <form className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    required
+                    className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]"
+                  />
+
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Your Company"
+                    required
+                    className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]"
+                  />
+                </div>
                 <input
-                  type="text"
-                  placeholder="Your Name"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  required
                   className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]"
                 />
 
                 <input
-                  type="email"
-                  placeholder="Your Email"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your Phone Number"
+                  required
                   className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]"
                 />
 
                 <textarea
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Your Message"
-                  rows="4"
+                  required
                   className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]"
-                ></textarea>
+                />
 
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg"
+                  disabled={loading}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg disabled:opacity-60"
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
+
+                {status.message && (
+                  <div
+                    className={`rounded-lg p-3 text-sm ${
+                      status.type === "success"
+                        ? "bg-green-500/10 border border-green-500 text-green-500"
+                        : "bg-red-500/10 border border-red-500 text-red-500"
+                    }`}
+                  >
+                    {status.message}
+                  </div>
+                )}
               </form>
 
               <button
                 onClick={() => setOpenForm(false)}
-                className="mt-4 text-sm text-gray-400 hover:text-white"
+                className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/20 transition"
+                aria-label="Close"
               >
-                Close
+                ✕
               </button>
             </div>
           </div>

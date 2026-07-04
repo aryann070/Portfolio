@@ -6,6 +6,7 @@ import Education from '@/components/Education';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Achievements from '@/components/Achievements';
+import GitHubCalendarSection from "@/components/GitHubCalendarSection";
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Projects projects={projects} />
         <Skills skills={skills} tools={tools} />
         <Achievements achievements={achievements} extracurricular={extracurricular} />
+        <GitHubCalendarSection />
         <Contact personal={personal} portfolio={portfolio} references={references} />
       </main>
       <Footer personal={personal} />

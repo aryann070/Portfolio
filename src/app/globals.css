@@ -270,3 +270,12 @@ body {
         box-shadow: none;
     }
 }
+
+.react-pdf__Page {
+  margin: auto;
+}
+
+.react-pdf__Page canvas {
+  max-width: 100%;
+  height: auto !important;
+}

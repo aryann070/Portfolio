@@ -354,7 +354,7 @@ export default function Contact({ personal, portfolio }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>

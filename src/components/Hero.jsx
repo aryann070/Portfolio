@@ -184,7 +184,7 @@ export default function Hero({ personal, portfolio }) {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mb-4 items-stretch sm:items-center">
           <a
-            href="https://drive.google.com/file/d/1no5ynssobKyXBZskijqlaf9xN3Fu8Pz3/view?usp=sharing"
+            href="/pdf/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center w-full sm:w-auto gap-2 px-6 py-3 sm:px-8 sm:py-3.5 font-semibold rounded-xl border border-[var(--border)] text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105"
@@ -193,7 +193,7 @@ export default function Hero({ personal, portfolio }) {
           </a>
 
           <a
-            href="https://drive.google.com/uc?export=download&id=1no5ynssobKyXBZskijqlaf9xN3Fu8Pz3"
+            href="/pdf/resume.pdf"
             download
             className="group inline-flex items-center justify-center w-full sm:w-auto gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-sm hover:shadow-purple-500/40 hover:-translate-y-1 hover:scale-105"
           >
@@ -202,7 +202,7 @@ export default function Hero({ personal, portfolio }) {
           {/* Open Form Button */}
           <button
             onClick={() => setOpenForm(true)}
-            className="group inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-xl border border-[var(--border)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-xl border border-[var(--border)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-105 cursor-pointer"
           >
             Contact Me
           </button>
@@ -268,7 +268,7 @@ export default function Hero({ personal, portfolio }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg disabled:opacity-60"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg disabled:opacity-60 cursor-pointer"
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </button>

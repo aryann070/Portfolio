@@ -64,7 +64,7 @@ export default function Header({ personal, portfolio }) {
               onClick={() =>
                 setTheme(resolvedTheme === "dark" ? "light" : "dark")
               }
-              className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition"
+              className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition cursor-pointer"
               aria-label="Toggle Theme"
             >
               {resolvedTheme === "dark" ? (
